@@ -100,7 +100,7 @@ treeJSON = d3.json("manyNodes.json", function(error, treeData) {
     // define the zoomListener which calls the zoom function on the "zoom" event constrained within the scaleExtents
     var zoomListener = d3.behavior.zoom().scaleExtent([0.1, 3]).on("zoom", zoom);
 
-    function initiateDrag(d, domNode) {
+    /* function initiateDrag(d, domNode) {
         draggingNode = d;
         d3.select(domNode).select('.ghostCircle').attr('pointer-events', 'none');
         d3.selectAll('.ghostCircle').attr('class', 'ghostCircle show');
@@ -140,7 +140,7 @@ treeJSON = d3.json("manyNodes.json", function(error, treeData) {
         }).remove();
 
         dragStarted = null;
-    }
+    } */
 
     // define the baseSvg, attaching a class for styling and the zoomListener
     var baseSvg = d3.select("#tree-container").append("svg")
@@ -151,7 +151,7 @@ treeJSON = d3.json("manyNodes.json", function(error, treeData) {
 
 
     // Define the drag listeners for drag/drop behaviour of nodes.
-    dragListener = d3.behavior.drag()
+    /* dragListener = d3.behavior.drag()
         .on("dragstart", function(d) {
             if (d == root) {
                 return;
@@ -240,7 +240,7 @@ treeJSON = d3.json("manyNodes.json", function(error, treeData) {
             centerNode(draggingNode);
             draggingNode = null;
         }
-    }
+    } */
 
     // Helper functions for collapsing and expanding nodes.
 
@@ -374,7 +374,7 @@ treeJSON = d3.json("manyNodes.json", function(error, treeData) {
 
         // Enter any new nodes at the parent's previous position.
         var nodeEnter = node.enter().append("g")
-            .call(dragListener)
+            // .call(dragListener)
             .attr("class", "node")
             .attr("transform", function(d) {
                 return "translate(" + source.y0 + "," + source.x0 + ")";
